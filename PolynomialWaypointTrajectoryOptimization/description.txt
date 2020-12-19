@@ -1,0 +1,10 @@
+注：
+
+1. ROS的 trajectory_generator_waypoint 中，采用了两种种方法去求解QP问题
+（1）第一种是 PolyQPGeneration() 函数，闭式求解
+（2）第二种是 SolvebyOOQPwithEigen() 函数，其内部调用了了两种求解器函数 OOQPSolver() 和 OSQPSolver()，通过578行的 solver_selection 变量切换
+两种方法通过 trajectory_generator_node.cpp 中的 trajGeneration() 函数中的108行 method_switch 变量切换
+
+2. 由于采用了OOQP和OSQP，因此需要先安装两个求解库，才能正确编译和运行代码
+
+3. 对于Rviz界面也做了适当调整，现在选点只能选择水平面以上的点，即z>0的点；一旦选择了水平面以下的点，即z<0的点，即视为选点结束，开始求解路径
