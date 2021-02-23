@@ -183,7 +183,7 @@ def real_time_dynamic_programming(mode):
     iter_num = 0
     bellman_error_list = []
     random_prob = 0.0
-    # step 1: Initialize G values of all states to admmisible values
+    # step 1: Initialize G values of all states to admissible values
     for key in graph.keys():
         state = graph[key]
         if state.is_goal:
